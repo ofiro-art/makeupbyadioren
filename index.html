@@ -164,6 +164,7 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .svc-banner-overlay{display:none;}
 .svc-banner h1{position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.5vw,4rem);font-weight:300;letter-spacing:0.22em;text-transform:uppercase;text-align:center;color:#fff;line-height:1.25;}
 .svc-body{padding:80px 60px 100px;max-width:820px;}
+.svc-body.full-width{max-width:100%;padding:80px 40px 100px;}
 .svc-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--gold-light);margin-bottom:24px;}
 .svc-body p{font-size:0.83rem;line-height:2;color:rgba(245,240,235,0.62);margin-bottom:16px;}
 .back-btn{display:inline-flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;color:var(--gold);font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;margin-bottom:20px;padding:0;transition:gap 0.3s;}
@@ -205,12 +206,44 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 
 /* ── ABOUT CTA ── */
 .about-cta-wrap{margin-top:48px;padding:40px;background:linear-gradient(135deg,rgba(201,169,110,0.08),rgba(201,169,110,0.03));border:1px solid rgba(201,169,110,0.2);text-align:center;}
-.about-cta-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--gold2);margin-bottom:24px;animation:ctaPulse 2.5s ease-in-out infinite;}
-@keyframes ctaPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.8;transform:scale(1.02);}}
+.about-cta-text{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:700;color:#ffffff;margin-bottom:24px;animation:ctaPulse 2.5s ease-in-out infinite;letter-spacing:0.05em;text-shadow:0 0 40px rgba(201,169,110,0.4);}
+@keyframes ctaPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.85;transform:scale(1.02);}}
 .about-cta-btn{background:var(--gold);color:var(--bg, #080808);border:none;padding:14px 36px;font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;transition:background 0.3s,transform 0.3s;font-weight:500;}
 .about-cta-btn:hover{background:var(--gold2);transform:translateY(-2px);}
 
-/* ── COURSES PAGE ── */
+/* ── BRIDAL CONTENT ── */
+.bridal-content{max-width:820px;margin-bottom:60px;}
+.bridal-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--gold-light);margin-bottom:24px;}
+.bridal-content p{font-size:0.83rem;line-height:2;color:rgba(245,240,235,0.62);margin-bottom:18px;}
+@media(max-width:768px){.bridal-content{margin-bottom:40px;}}
+
+/* ── SERVICE GALLERY ── */
+.gallery-label{font-size:0.56rem;letter-spacing:0.5em;text-transform:uppercase;color:var(--gold);margin:48px 0 24px;display:flex;align-items:center;gap:16px;}
+.gallery-label::before{content:'';width:30px;height:1px;background:var(--gold);opacity:0.5;}
+.svc-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:48px;width:100%;}
+.svc-gallery-item{overflow:hidden;aspect-ratio:4/5;background:var(--dark);width:100%;}
+.svc-gallery-item img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform 0.6s ease,opacity 0.4s ease;opacity:0.88;}
+.svc-gallery-item:hover img{transform:scale(1.04);opacity:1;}
+
+/* ── SCROLL ANIMATION ── */
+.gallery-animate{
+  opacity:0;
+  transform:translateY(50px) scale(0.95);
+  transition:opacity 1s cubic-bezier(0.22,1,0.36,1),transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+.gallery-animate.is-visible{opacity:1;transform:translateY(0) scale(1);}
+
+@media(max-width:1024px){
+  .svc-gallery{grid-template-columns:repeat(3,1fr);gap:4px;}
+}
+@media(max-width:768px){
+  .svc-gallery{grid-template-columns:repeat(2,1fr);gap:4px;}
+  .svc-gallery-item{aspect-ratio:4/5;}
+  .gallery-animate{transform:translateY(30px) scale(0.97);}
+}
+@media(max-width:480px){
+  .svc-gallery{grid-template-columns:1fr 1fr;gap:3px;}
+}
 .course-card{background:var(--dark);border:1px solid rgba(201,169,110,0.12);padding:52px 48px;margin-top:8px;}
 .course-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;gap:20px;}
 .course-tag{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
@@ -635,7 +668,88 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
 <!-- BRIDAL -->
 <div id="p-bridal" class="page"><div class="svc-page">
   <div class="svc-banner"><img class="svc-banner-bg" src="images/bridal.jpg" alt="Bridal Makeup"><div class="svc-banner-overlay"></div></div>
-  <div class="svc-body"><button class="back-btn" data-page="home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button><h2>Your most radiant day</h2><p>Bridal makeup is one of the most personal and meaningful services I offer. I work closely with every bride to understand her vision — whether that's a soft, dewy natural look, a bold and glamorous statement, or something uniquely her own.</p><p>Every bridal package includes a trial session to ensure the look is perfected before the big day. Long-lasting, professional-grade products keep you flawless from morning ceremony to evening celebration.</p><p>Travel to venue is available. Early morning bookings are welcome. Enquire for full pricing and packages.</p></div>
+  <div class="svc-body full-width">
+    <button class="back-btn" data-page="home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
+
+    <div class="bridal-content">
+      <h2>Your most radiant day</h2>
+      <p>Your wedding day is one of the most meaningful and unforgettable moments of your life — and your makeup should reflect that.</p>
+      <p>Bridal makeup is not just about looking beautiful; it is about creating a timeless, flawless look that enhances your natural features while lasting perfectly from the first look to the last dance.</p>
+      <p>My approach focuses on refined, elegant beauty — soft, radiant skin, delicate sculpting, and harmonious neutral tones that elevate your natural glow without overpowering it. This aesthetic remains the most desired among modern brides for its sophistication and longevity.</p>
+
+      <h3 class="about-section-title">A Tailored, Personal Approach</h3>
+      <p>Every bride is unique — and so is every makeup design. I carefully customise each look based on:</p>
+      <ul class="about-list">
+        <li>Skin type and texture</li>
+        <li>Facial structure and proportions</li>
+        <li>Personal style and preferences</li>
+        <li>Lighting conditions (daylight / indoor / evening)</li>
+        <li>Photography requirements</li>
+      </ul>
+      <p>The goal is to highlight your strongest features while subtly softening any areas you prefer to refine — creating a balanced, photogenic, and long-lasting result.</p>
+
+      <h3 class="about-section-title">Longevity &amp; Professional Techniques</h3>
+      <p>Bridal makeup requires advanced techniques and high-performance products to ensure:</p>
+      <ul class="about-list">
+        <li>Long-lasting wear (12–16 hours)</li>
+        <li>Resistance to humidity and heat (especially relevant in Singapore)</li>
+        <li>Flawless appearance in both real life and photography</li>
+        <li>Minimal need for touch-ups</li>
+      </ul>
+      <p>I use only premium, professional-grade products selected specifically for bridal performance.</p>
+
+      <h3 class="about-section-title">Bridal Trial — A Key Step</h3>
+      <p>A trial session is highly recommended prior to your wedding day. This allows us to:</p>
+      <ul class="about-list">
+        <li>Define your ideal look together</li>
+        <li>Test tones, textures, and intensity</li>
+        <li>Ensure full comfort and confidence</li>
+        <li>Finalise every detail in advance</li>
+      </ul>
+      <p>By the time of your wedding, everything is perfectly planned — leaving you relaxed and confident.</p>
+
+      <h3 class="about-section-title">Choosing the Right Makeup Artist</h3>
+      <p>Selecting the right bridal makeup artist is essential. When making your decision, consider:</p>
+      <ul class="about-list">
+        <li><strong style="color:var(--gold-light);">Proven Experience &amp; Recommendations</strong> — Work with an artist trusted by real brides and clients.</li>
+        <li><strong style="color:var(--gold-light);">Portfolio Quality</strong> — Review previous bridal work to assess style, consistency, and attention to detail.</li>
+        <li><strong style="color:var(--gold-light);">Professional Products</strong> — Ensure only high-quality, long-wear products are used.</li>
+        <li><strong style="color:var(--gold-light);">Logistics &amp; Availability</strong> — Choose an artist who can accommodate your schedule and location seamlessly.</li>
+      </ul>
+
+      <div class="about-highlight">
+        <p><strong style="color:var(--gold-light);">The Experience</strong><br>My role is not only to create your look but to provide a calm, professional, and luxurious experience on your wedding day. From our first consultation to the final touch, every detail is handled with precision, care, and a deep understanding of bridal beauty.</p>
+      </div>
+    </div>
+
+    <div class="gallery-label">Gallery</div>
+    <div class="svc-gallery" id="bridal-gallery">
+      <div class="svc-gallery-item gallery-animate" style="--delay:0s">
+        <img src="images/bridal1.jpeg" alt="Bridal Makeup 1">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0.15s">
+        <img src="images/bridal2.jpeg" alt="Bridal Makeup 2">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0.3s">
+        <img src="images/bridal3.jpeg" alt="Bridal Makeup 3">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0s">
+        <img src="images/bridal4.jpeg" alt="Bridal Makeup 4">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0.15s">
+        <img src="images/bridal5.jpeg" alt="Bridal Makeup 5">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0.3s">
+        <img src="images/bridal6.jpeg" alt="Bridal Makeup 6">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0s">
+        <img src="images/bridal7.jpeg" alt="Bridal Makeup 7">
+      </div>
+      <div class="svc-gallery-item gallery-animate" style="--delay:0.15s">
+        <img src="images/bridal8.jpeg" alt="Bridal Makeup 8">
+      </div>
+    </div>
+  </div>
   <footer><div class="f-logo">Adi Oren &middot; Makeup Artist</div><div class="f-copy">&copy; 2025 Makeup by Adi Oren</div><div class="f-social"><a href="https://www.instagram.com/pro_makeup_artist_adi?igsh=dW1neDk4MTY5MHB1" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></footer>
 </div></div>
 
@@ -649,7 +763,81 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
 <!-- SFX -->
 <div id="p-sfx" class="page"><div class="svc-page">
   <div class="svc-banner"><img class="svc-banner-bg" src="images/sfx.jpg" alt="Special Effects Makeup"><div class="svc-banner-overlay"></div></div>
-  <div class="svc-body"><button class="back-btn" data-page="home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button><h2>Art without boundaries</h2><p>Special effects and creative makeup is where technique meets pure imagination. From theatrical body paint and fantasy characters to avant-garde editorial art, bold visions are brought to life with skill and creativity.</p><p>Whether for film productions, theatre performances, costume events, or artistic photography projects, every piece is executed with meticulous attention to detail and the highest quality materials.</p><p>Custom designs are welcome. Please contact with your concept for a consultation and quote.</p></div>
+  <div class="svc-body full-width">
+    <button class="back-btn" data-page="home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
+
+    <div class="bridal-content">
+      <h2>What is SFX Makeup?</h2>
+      <p>Have you ever wondered who creates the terrifying creatures, aging effects, and otherworldly characters you see on screen?</p>
+      <p>Special Effects (SFX) Makeup is the art of transforming a person's appearance beyond natural beauty into something entirely new, often dramatic, and sometimes unrecognizable.</p>
+      <p>While traditional makeup focuses on enhancing features and refining beauty, SFX makeup is designed to create characters — from subtle aging and realistic injuries to complex transformations such as witches, aliens, monsters, and supernatural beings.</p>
+
+      <h3 class="about-section-title">The Role of SFX in Film &amp; Production</h3>
+      <p>In film, television, and stage productions, visual realism is essential. SFX makeup plays a key role in building believable characters and supporting storytelling.</p>
+      <p>From bruises, cuts, burns, and scars to full character reconstruction, every effect must appear authentic under high-definition cameras and professional lighting conditions.</p>
+      <p>Whether it's a horror scene, a science-fiction character, or an age transformation spanning decades — SFX makeup is what brings these visions to life.</p>
+
+      <h3 class="about-section-title">Technical Expertise &amp; Materials</h3>
+      <p>Creating realistic special effects requires both artistic vision and technical mastery. My work is based on professional training in stage and film makeup, including specialized SFX techniques. I have hands-on experience working with a wide range of materials such as:</p>
+      <ul class="about-list">
+        <li>Latex and silicone for prosthetics</li>
+        <li>Gel-based textures and skin simulation</li>
+        <li>Artificial blood and wound effects</li>
+        <li>Rubber-based materials for structure and flexibility</li>
+      </ul>
+      <p>These materials allow me to build layered, highly realistic effects tailored to each production.</p>
+
+      <h3 class="about-section-title">Process &amp; Attention to Detail</h3>
+      <p>SFX makeup is a multi-stage process that requires time, precision, and patience. Each transformation is carefully constructed — from sculpting and application to colouring and blending — often requiring extended preparation time to achieve a seamless, believable result.</p>
+      <p>Attention to detail is critical. Every texture, shade, and contour is designed to ensure the final look appears completely natural on camera.</p>
+
+      <h3 class="about-section-title">Why It Matters</h3>
+      <p>Special Effects Makeup is essential in any production where characters undergo physical transformation. From aging a character by decades to creating cinematic creatures, SFX makeup enables directors and creators to translate imagination into reality.</p>
+      <p>It is a fundamental part of modern storytelling across:</p>
+      <ul class="about-list">
+        <li>Film &amp; Television</li>
+        <li>Theatre productions</li>
+        <li>Commercials &amp; advertising</li>
+        <li>Creative and editorial projects</li>
+      </ul>
+
+      <div class="about-highlight">
+        <p>From zombies and fantasy characters to realistic trauma effects — SFX makeup creates the visual language that makes stories believable.</p>
+      </div>
+    </div>
+
+    <div class="gallery-label">Gallery</div>
+    <div class="svc-gallery page-gallery" data-page-id="p-sfx">
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx1.jpeg" alt="SFX 1"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx2.jpeg" alt="SFX 2"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx3.jpeg" alt="SFX 3"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx4.jpeg" alt="SFX 4"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx5.jpeg" alt="SFX 5"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx6.jpeg" alt="SFX 6"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx7.jpeg" alt="SFX 7"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx8.jpeg" alt="SFX 8"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx9.jpeg" alt="SFX 9"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx10.jpeg" alt="SFX 10"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx11.jpeg" alt="SFX 11"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx12.jpeg" alt="SFX 12"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx13.jpeg" alt="SFX 13"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx14.jpeg" alt="SFX 14"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx15.jpeg" alt="SFX 15"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx16.jpeg" alt="SFX 16"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx17.jpeg" alt="SFX 17"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx18.jpeg" alt="SFX 18"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx19.jpeg" alt="SFX 19"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx20.jpeg" alt="SFX 20"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx21.jpeg" alt="SFX 21"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx22.jpeg" alt="SFX 22"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx23.jpeg" alt="SFX 23"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx24.jpeg" alt="SFX 24"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx25.jpeg" alt="SFX 25"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx26.jpeg" alt="SFX 26"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx27.jpeg" alt="SFX 27"></div>
+      <div class="svc-gallery-item gallery-animate"><img src="images/sfx28.jpeg" alt="SFX 28"></div>
+    </div>
+  </div>
   <footer><div class="f-logo">Adi Oren &middot; Makeup Artist</div><div class="f-copy">&copy; 2025 Makeup by Adi Oren</div><div class="f-social"><a href="https://www.instagram.com/pro_makeup_artist_adi?igsh=dW1neDk4MTY5MHB1" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></footer>
 </div></div>
 
@@ -794,6 +982,50 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
     });
   });
 
+  // ── Gallery Scroll Animation — works on ALL pages ──
+  (function() {
+    function initGalleryForPage(pageEl) {
+      var items = pageEl.querySelectorAll('.gallery-animate');
+      if (!items.length) return;
+
+      items.forEach(function(item) { item.classList.remove('is-visible'); });
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var all = Array.from(pageEl.querySelectorAll('.gallery-animate'));
+            var index = all.indexOf(entry.target);
+            setTimeout(function() {
+              entry.target.classList.add('is-visible');
+            }, (index % 3) * 150);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+
+      // Trigger immediately visible items
+      items.forEach(function(item, index) {
+        var rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          setTimeout(function() { item.classList.add('is-visible'); }, 200 + (index % 3) * 150);
+        } else {
+          observer.observe(item);
+        }
+      });
+    }
+
+    // Watch ALL pages with galleries
+    document.querySelectorAll('.page').forEach(function(pageEl) {
+      if (!pageEl.querySelector('.gallery-animate')) return;
+      var mo = new MutationObserver(function() {
+        if (pageEl.classList.contains('active')) {
+          setTimeout(function() { initGalleryForPage(pageEl); }, 200);
+        }
+      });
+      mo.observe(pageEl, { attributes: true, attributeFilter: ['class'] });
+    });
+  })();
+
   // Loader hide
   function hideLoader() {
     var loader = document.getElementById('loader');
@@ -804,13 +1036,8 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
     }
   }
   setTimeout(hideLoader, 2000);
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(hideLoader, 1800);
-  });
-  setTimeout(function() {
-    var loader = document.getElementById('loader');
-    if (loader) loader.style.display = 'none';
-  }, 3000);
+  document.addEventListener('DOMContentLoaded', function() { setTimeout(hideLoader, 1800); });
+  setTimeout(function() { var l = document.getElementById('loader'); if(l) l.style.display='none'; }, 3000);
 
 })();
 </script>
