@@ -131,6 +131,11 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .hero-subtitle{font-size:0.62rem;letter-spacing:0.55em;text-transform:uppercase;color:var(--grey);margin:18px 0 44px;}
 .hero-cta{display:inline-flex;align-items:center;gap:14px;background:none;border:none;border-bottom:1px solid rgba(201,169,110,0.3);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:0.63rem;letter-spacing:0.35em;text-transform:uppercase;cursor:pointer;padding-bottom:6px;transition:gap 0.3s,border-color 0.3s;}
 .hero-cta:hover{gap:22px;border-bottom-color:var(--gold);}
+.hero-cta-group{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.hero-btn-primary{background:var(--gold);color:#080808;border:none;padding:16px 36px;font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:background 0.3s,transform 0.2s;}
+.hero-btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+.hero-btn-secondary{background:none;color:var(--gold);border:1px solid rgba(201,169,110,0.5);padding:15px 36px;font-family:'Montserrat',sans-serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;font-weight:400;transition:border-color 0.3s,color 0.3s,transform 0.2s;}
+.hero-btn-secondary:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-1px);}
 .hero-scroll{position:absolute;bottom:44px;right:64px;writing-mode:vertical-rl;font-size:0.53rem;letter-spacing:0.45em;color:var(--grey);text-transform:uppercase;display:flex;align-items:center;gap:14px;z-index:2;pointer-events:none;}
 .hero-scroll::after{content:'';width:1px;height:55px;background:linear-gradient(to bottom,var(--grey),transparent);}
 
@@ -332,6 +337,8 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
   .hero-title{font-size:clamp(3.5rem,14vw,6rem);}
   .hero-subtitle{font-size:0.55rem;letter-spacing:0.35em;margin:14px 0 32px;}
   .hero-cta{font-size:0.58rem;letter-spacing:0.25em;}
+  .hero-cta-group{gap:12px;}
+  .hero-btn-primary,.hero-btn-secondary{padding:13px 24px;font-size:0.6rem;letter-spacing:0.2em;}
   .hero-scroll{display:none;}
 
   /* SERVICES */
@@ -418,7 +425,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
       <a href="https://www.instagram.com/pro_makeup_artist_adi?igsh=dW1neDk4MTY5MHB1" target="_blank" aria-label="Instagram">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="/cdn-cgi/l/email-protection#503134393f22353e6162606810373d31393c7e333f3d" aria-label="Email">
+      <a href="mailto:adioren1208@gmail.com" aria-label="Email">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </a>
     </div>
@@ -437,7 +444,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
     <a href="https://www.instagram.com/pro_makeup_artist_adi?igsh=dW1neDk4MTY5MHB1" target="_blank">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="/cdn-cgi/l/email-protection#b0d1d4d9dfc2d5de81828088f0d7ddd1d9dc9ed3dfdd">
+    <a href="mailto:adioren1208@gmail.com">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
     </a>
   </div>
@@ -465,10 +472,10 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
       <p class="hero-eyebrow">Professional Makeup Artist &middot; Singapore</p>
       <h1 class="hero-title">Adi<em>Oren</em></h1>
       <p class="hero-subtitle">Where beauty meets artistry</p>
-      <button class="hero-cta" id="btn-explore">
-        Explore Services
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
+      <div class="hero-cta-group">
+        <button class="hero-btn-primary" data-page="contact">Book a Session</button>
+        <button class="hero-btn-secondary" id="btn-explore">View Services</button>
+      </div>
     </div>
     <div class="hero-scroll">Scroll</div>
   </section>
@@ -570,7 +577,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
         <div class="divider"></div>
 
         <div class="detail-row"><span class="detail-label">Studio</span><span class="detail-val">21 St. Thomas Walk, Grange Heights, Unit 22-25, Singapore 238145</span></div>
-        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-val"><a href="/cdn-cgi/l/email-protection#107174797f62757e2122202850777d71797c3e737f7d"><span class="__cf_email__" data-cfemail="3657525f594453580704060e76515b575f5a1855595b">[email&#160;protected]</span></a></span></div>
+        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-val"><a href="mailto:adioren1208@gmail.com">adioren1208@gmail.com</a></span></div>
         <div class="detail-row"><span class="detail-label">Phone</span><span class="detail-val"><a href="tel:+6585333020">+65-8533 3020</a></span></div>
         <div class="detail-row"><span class="detail-label">Instagram</span><span class="detail-val"><a href="https://www.instagram.com/pro_makeup_artist_adi?igsh=dW1neDk4MTY5MHB1" target="_blank">@pro_makeup_artist_adi</a></span></div>
 
@@ -888,7 +895,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
     <div class="contact-loc">
       <h3>Studio Location</h3>
       <p>21 St. Thomas Walk, Grange Heights<br>Unit 22-25, Singapore 238145</p>
-      <p style="margin-top:16px">Mail: <a href="/cdn-cgi/l/email-protection#6c0d0805031e09025d5e5c542c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="4e2f2a27213c2b207f7c7e760e29232f2722602d2123">[email&#160;protected]</span></a><br>Phone: <a href="tel:+6585333020">+65-8533 3020</a></p>
+      <p style="margin-top:16px">Mail: <a href="mailto:adioren1208@gmail.com">adioren1208@gmail.com</a><br>Phone: <a href="tel:+6585333020">+65-8533 3020</a></p>
     </div>
     <footer><div class="f-logo">Adi Oren &middot; Makeup Artist</div><div class="f-copy">&copy; 2026 Makeup by Adi Oren &middot; Singapore</div><div class="f-social"><a href="https://www.facebook.com/share/1BeJE14mxF/" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.instagram.com/pro_makeup_artist_adi?igsh=dW1neDk4MTY5MHB1" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></footer>
   </div>
@@ -899,7 +906,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function() {
 
   /* ── Loader ── */
@@ -960,6 +967,11 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
     btn.addEventListener('click', function() {
       go(this.getAttribute('data-page'));
     });
+  });
+
+  // Hero Book a Session button
+  document.querySelector('.hero-btn-primary[data-page="contact"]').addEventListener('click', function() {
+    go('contact');
   });
 
   // Explore services button
