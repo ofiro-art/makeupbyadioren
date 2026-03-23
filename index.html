@@ -172,7 +172,7 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .svc-body.full-width{max-width:100%;padding:80px 40px 100px;}
 .svc-body h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--gold-light);margin-bottom:24px;}
 .svc-body p{font-size:0.83rem;line-height:2;color:rgba(245,240,235,0.62);margin-bottom:16px;}
-.back-btn{display:inline-flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;color:var(--gold);font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;margin-bottom:20px;padding:0;transition:gap 0.3s;}
+.back-btn{display:inline-flex;align-items:center;gap:10px;background:none;border:none;cursor:pointer;color:var(--gold);font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;margin-bottom:24px;padding:0;transition:gap 0.3s;}
 .back-btn:hover{gap:16px;}
 
 /* BANNER IMAGES */
@@ -290,7 +290,7 @@ body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-se
 .fg textarea{resize:none;height:90px;}
 .send-btn{background:none;border:none;border-bottom:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:0.63rem;letter-spacing:0.4em;text-transform:uppercase;cursor:pointer;padding:8px 0;display:inline-flex;align-items:center;gap:12px;transition:gap 0.3s;margin-top:8px;}
 .send-btn:hover{gap:20px;}
-.contact-right{position:relative;overflow:hidden;background:url('images/about.jpg') center top/cover no-repeat;display:flex;align-items:center;justify-content:center;}
+.contact-right{position:relative;overflow:hidden;background:#0d0b07 url('images/about.jpg') center 30%/cover no-repeat;display:flex;align-items:center;justify-content:center;}
 .contact-right::before{content:'';position:absolute;inset:0;background:rgba(8,8,8,0.35);pointer-events:none;}
 .contact-right span{display:none;}
 .contact-loc{padding:56px 64px;background:var(--dark);border-top:1px solid rgba(201,169,110,0.1);}
@@ -511,6 +511,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
     <div class="about-body">
       <div class="about-photo"></div>
       <div class="about-text">
+        <button class="back-btn" data-page="home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
         <div class="section-label">Adi Oren</div>
 
         <p>Hi, I'm Adi Oren, a professional makeup artist currently based in Singapore. Originally from Israel, I spent several years working in the tech industry before relocating with my family — first to Bangkok, and now to Singapore.</p>
@@ -883,6 +884,7 @@ footer{background:var(--black);padding:34px 60px;display:flex;align-items:center
   <div class="contact-page">
     <div class="contact-inner">
       <div class="contact-left">
+        <button class="back-btn" data-page="home"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
         <h2>Stay in <em>Touch</em></h2>
         <div class="fg"><label>Name</label><input type="text" id="c-name" placeholder="Your full name"></div>
         <div class="fg"><label>Email</label><input type="email" id="c-email" placeholder="your@email.com"></div>
